@@ -4,9 +4,7 @@ const { Category, Product } = require("../../models");
 // The `/api/categories` endpoint
 
 router.get("/", (req, res) => {
-  Category.findAll({
-    include: [Product],
-  })
+  Category.findAll({})
     .then((products) => res.json(products))
     .catch((err) => {
       console.log(err);
@@ -21,7 +19,6 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [Product],
   })
     .then((products) => res.json(products))
     .catch((err) => {
